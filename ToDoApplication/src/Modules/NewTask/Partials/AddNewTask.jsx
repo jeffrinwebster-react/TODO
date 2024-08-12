@@ -103,15 +103,16 @@ const AddNewTask = ({ updateRecord, formClose, importantRecord }) => {
           <Row gutter={[24, 24]}>
             <Col span={24} md={10}>
               <label>Enter New Task</label>
-              <input {...register("newTask")} placeholder="Enter new task" />
+              <input {...register("newTask",{ required: true })} placeholder="Enter new task" />
             </Col>
             <Col span={24} md={8}>
               <label>Category</label>
-              <input {...register("category")} placeholder="Enter category" />
+              <input {...register("category",{ required: true })} placeholder="Enter category" />
             </Col>
             <Col span={24} md={6}>
               <DatePicker
                 placeholder="Due Date"
+                required
                 onChange={dateChange}
                 className="date_style"
                 value={dates ? dayjs(dates) : null} // Set the date value for the DatePicker
