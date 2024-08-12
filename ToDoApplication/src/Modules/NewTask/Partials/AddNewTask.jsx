@@ -49,7 +49,7 @@ const SubmitButton = styled(Button)`
   }
 `;
 
-const AddNewTask = ({ updateRecord, formClose, importantRecord }) => {
+const AddNewTask = ({ updateRecord, formClose, importantRecord ,categoryRecord}) => {
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
 
@@ -70,8 +70,15 @@ const AddNewTask = ({ updateRecord, formClose, importantRecord }) => {
         category: importantRecord.category,
       });
       setDates(importantRecord.date); // Set the date field
+    } else if (categoryRecord) {
+      reset({
+        newTask: categoryRecord.newTask,
+        category: categoryRecord.category,
+      });
+      setDates(categoryRecord.date); // Set the date field
+
     }
-  }, [updateRecord, reset,importantRecord]);
+  }, [updateRecord, reset,importantRecord,categoryRecord]);
 
   const dateChange = (date, dateString) => {
     setDates(dateString); // Set the formatted date string directly
@@ -85,7 +92,10 @@ const AddNewTask = ({ updateRecord, formClose, importantRecord }) => {
       dispatch(editTask({ key: updateRecord.key, updatedTask: newValues }));
       formClose();
     } else if (importantRecord) {
-      dispatch(editTask({ key: updateRecord.key, updatedTask: newValues }));
+      dispatch(editTask({ key: importantRecord.key, updatedTask: newValues }));
+      formClose();
+    }  else if (categoryRecord) {
+      dispatch(editTask({ key: categoryRecord.key, updatedTask: newValues }));
       formClose();
     } else {
       // Otherwise, add a new task
@@ -121,13 +131,13 @@ const AddNewTask = ({ updateRecord, formClose, importantRecord }) => {
             </Col>
             <Col span={24} md={24} style={{ textAlign: "center" }}>
               <SubmitButton type="primary" htmlType="submit">
-                {updateRecord ? "Update Task" : importantRecord ? "Update Task" : "Add Task"}
+                {updateRecord ? "Update Task" : importantRecord ? "Update Task" : categoryRecord ? "Update Task" :  "Add Task"}
               </SubmitButton>
             </Col>
           </Row>
         </form>
       </NewTaskHead>
-      {updateRecord || importantRecord ? null : <NewTaskCard />}
+      {updateRecord || importantRecord || categoryRecord  ? null : <NewTaskCard />}
     </>
   );
 };

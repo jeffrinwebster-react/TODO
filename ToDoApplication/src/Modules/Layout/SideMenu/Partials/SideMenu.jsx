@@ -10,7 +10,7 @@ const SidemenuHead = styled.div`
     /* background: #a3c5f4; */
 
     @media screen and (max-width:768px)  {
-      height: 24vh;
+      height: 36vh;
 
       
     }

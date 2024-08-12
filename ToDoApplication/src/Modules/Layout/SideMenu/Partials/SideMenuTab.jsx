@@ -55,7 +55,15 @@ const Datas = [
         path:'/deadline'
         // icon:<FcApproval fontSize={20} />
         
+    },
+    {
+        name:"Categories",
+        key:6,
+        path:'/categories'
+        // icon:<FcApproval fontSize={20} />
+        
     }
+
 ]
 
 const SideMenuTab = () => {

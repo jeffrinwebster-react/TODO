@@ -7,6 +7,7 @@ import Home from './Modules/Home/Partials/Home';
 import Important from './Modules/Important/Partials/Important';
 import Completed from './Modules/Completed/Partials/Completed';
 import Deadline from './Modules/Deadline/Partials/Deadline';
+import Categories from './Modules/Categories/Partials/Categories';
 
 const App = () => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/importanttask" element={<Important />} />
           <Route path="/taskcompleted" element={<Completed />} />
           <Route path="/deadline" element={<Deadline />} />
+          <Route path="/categories" element={<Categories />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Layout>
