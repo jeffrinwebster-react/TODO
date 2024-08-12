@@ -10,7 +10,7 @@ const Headermenu = styled.div`
   justify-content: center; /* Center the content */
   align-items: center;
   position: relative; /* Enable absolute positioning of the switch */
-  background: ${({ isDarkMode }) => (isDarkMode ? "#333" : "#a3c5f4")};
+  background: ${({ isDarkMode }) => (isDarkMode ? "#333" : "#cee3ff")};
 
   h1 {
     color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#000")};

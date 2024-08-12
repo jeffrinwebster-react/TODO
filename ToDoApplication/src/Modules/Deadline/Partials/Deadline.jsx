@@ -7,7 +7,6 @@ import { Col, Row, Tooltip } from "antd";
 import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
 
-
 const ImportantCardStyle = styled.div`
   cursor: pointer;
   margin: 10px;
@@ -77,7 +76,6 @@ const Deadline = () => {
   const allTasks = useSelector((state) => state.newtask.newtask);
   const bookmarkedTasks = useSelector((state) => state.newtask.bookmarkedTasks);
 
-
   // Get today's date and the date two days from now
   const today = dayjs();
   const twoDaysFromNow = today.add(10, "day").endOf("day");
@@ -90,39 +88,43 @@ const Deadline = () => {
 
   return (
     <>
-
+      {tasksDueInTwoDays.length > 0 && (
+        <h1 style={{ padding: "10px", textAlign: "start" }}>Deadlines</h1>
+      )}
       {tasksDueInTwoDays.length === 0 ? (
-          <p style={{textAlign:'center'}}>No tasks are due in the next two days.</p>
-        ) : (
-            <>
-      {tasksDueInTwoDays.map((task, index) => (
+        <p style={{ textAlign: "center", fontSize: "20px" }}>
+          There are no tasks due in the next 10 days.
+        </p>
+      ) : (
         <>
-          <div key={index}>
-            <ImportantCardStyle>
-              <Row className="taskcard_contents">
-                <Col span={24} md={12}>
-                  <div className="head_content">
-                    <h4>Category: {task.category}</h4>
-                  </div>
-                </Col>
-                <Col span={24} md={12}>
-                  <div className="head_content">
-                    <h4>Due Date: {task.date}</h4>
-                  </div>
-                </Col>
-                <Col span={24} md={2} className="checkbox_style">
-                  {/* <Checkbox
+          {tasksDueInTwoDays.map((task, index) => (
+            <>
+              <div key={index}>
+                <ImportantCardStyle>
+                  <Row className="taskcard_contents">
+                    <Col span={24} md={12}>
+                      <div className="head_content">
+                        <h4>Category: {task.category}</h4>
+                      </div>
+                    </Col>
+                    <Col span={24} md={12}>
+                      <div className="head_content">
+                        <h4>Due Date: {task.date}</h4>
+                      </div>
+                    </Col>
+                    <Col span={24} md={2} className="checkbox_style">
+                      {/* <Checkbox
                     checked={completedTasks.some(
                       (task) => task.key === task.key
                     )}
                     onChange={() => handleCheckboxChange(task)}
                   /> */}
-                </Col>
-                <Col span={24} md={18}>
-                  <p>{task.newTask}</p>
-                </Col>
-                <Col span={24} md={4} className="star">
-                  {/* <Tooltip title="Important">
+                    </Col>
+                    <Col span={24} md={18}>
+                      <p>{task.newTask}</p>
+                    </Col>
+                    <Col span={24} md={4} className="star">
+                      {/* <Tooltip title="Important">
                     <FaStar
                       className={
                         bookmarkedTasks.find((task) => task.key === task.key)
@@ -144,13 +146,14 @@ const Deadline = () => {
                       onClick={() => handleDeleteTask(task)}
                     />
                   </Tooltip> */}
-                </Col>
-              </Row>
-            </ImportantCardStyle>
-          </div>
+                    </Col>
+                  </Row>
+                </ImportantCardStyle>
+              </div>
+            </>
+          ))}
         </>
-      ))}
-      </> )}
+      )}
     </>
   );
 };

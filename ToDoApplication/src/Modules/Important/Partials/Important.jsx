@@ -152,6 +152,9 @@ const Important = () => {
 
   return (
     <ImportantHead>
+          {bookmarkedTasks.length == 0 && (
+        <h1 style={{ padding: "10px", textAlign: "center" }}>There is no Important Tasks!!!</h1>
+      )}
       <Row>
         <Col span={24} md={12}>
           {bookmarkedTasks.length > 0 && (

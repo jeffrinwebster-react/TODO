@@ -231,7 +231,7 @@ const Home = () => {
           </div>
         ))
       ) : (
-        <p>No tasks to display</p>
+        <p style={{textAlign:'center',fontSize:'20px'}}>No tasks to display</p>
       )}
     </>
   );

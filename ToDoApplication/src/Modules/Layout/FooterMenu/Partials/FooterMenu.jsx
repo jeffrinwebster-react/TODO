@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useTheme } from "../../../ThemeProvider/ThemeProvider";
-import { Col, Row, Switch } from "antd";
 import { FaGithub } from "react-icons/fa";
 
 const Headermenu = styled.div`
@@ -11,7 +10,7 @@ const Headermenu = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${({ isDarkMode }) => (isDarkMode ? "#333" : "#a3c5f4")};
+  background: ${({ isDarkMode }) => (isDarkMode ? "#333" : "#cee3ff")};
 
   p {
     color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#000")};
@@ -39,15 +38,10 @@ const FooterMenu = () => {
     <Headermenu isDarkMode={isDarkMode}>
       <div className="follow">
       <p>Jeffrin Webster</p>
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/jeffrinwebster-react/TODO.git" target="_blank" rel="noopener noreferrer">
           <FaGithub />
         </a>
-        {/* <p>Follow Me On : </p>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-          <FaGithub />
-        </a> */}
       </div>
-      {/* <Switch onClick={toggleTheme} /> */}
     </Headermenu>
   );
 };

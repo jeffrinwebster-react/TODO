@@ -106,6 +106,9 @@ const Completed = () => {
 
   return (
     <CompletedHead>
+       {completedTasks.length == 0 && (
+        <h1 style={{ padding: "10px", textAlign: "center" }}>There is no Completed Tasks!!!</h1>
+      )}
       <Row>
         <Col span={24} md={12}>
           {completedTasks.length > 0 && (
